@@ -1,1 +1,1 @@
-# react_api
+# React app for Randomuser.me api.
