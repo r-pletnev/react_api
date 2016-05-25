@@ -2,22 +2,21 @@ var React = require('react');
 var Bootstrap = require('react-bootstrap');
 var Col = Bootstrap.Col;
 var Button = Bootstrap.Button;
-var ButtonToolBar = Bootstrap.ButtonToolBar;
+var ButtonGroup = Bootstrap.ButtonGroup;
 
-function SideBar(props){
+function Sidebar(props){
+	buttonSize = 'large';
 	return(
 		<Col sm={2}>
-			<ButtonToolBar>
-				<Button bsStyle="primary" onClick={props.startHandler}>
+				<Button bsStyle="primary" block bsSize={buttonSize} onClick={props.startHandler}>
 					Start
 				</Button>
-				<Button bsStyle="danger" onClick={props.clearHandler}>
+				<Button bsStyle="danger" block bsSize={buttonSize} onClick={props.clearHandler}>
 					Clear
 				</Button>
-			</ButtonToolBar>
 		</Col>
 	)
 }
 
 
-module.exports = SideBar;
+module.exports = Sidebar;
