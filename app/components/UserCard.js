@@ -7,9 +7,9 @@ var Image = Bootstrap.Image;
 var PropTypes = React.PropTypes;
 
 function UserCard(user){
-	var userDescription = user.description.map(function(prop){
+	var userDescription = user.description.map(function(prop, index){
 		return (
-			<span>
+			<span key={index}>
 				<strong>{prop[0]} :</strong> {prop[1]} {' '}
 			</span>
 		)
@@ -18,7 +18,7 @@ function UserCard(user){
 		<ListGroupItem key={user.id}>
 			<Row>
 				<Col sm={2}>
-					<Image src={user.thumbnail_url} rounded/>
+					<Image src={user.thumbnail_url} circle/>
 				</Col>
 				<Col sm={10}>
 					<h4>{user.fullName}</h4>
@@ -34,7 +34,6 @@ UserCard.propTypes = {
 	thumbnail_url: PropTypes.string.isRequired,
 	fullName: PropTypes.string.isRequired,
 	description: PropTypes.array.isRequired,
-	id: PropTypes.string.isRequired
 }
 
 

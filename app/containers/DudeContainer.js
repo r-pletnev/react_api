@@ -11,7 +11,6 @@ var dudeContainer = React.createClass({
 		gender: PropTypes.string.isRequired,
 		city: PropTypes.string.isRequired,
 		title: PropTypes.string.isRequired,
-		// id: PropTypes.string.isRequired
 	},
 	getInitialState: function(){
 		return{
@@ -21,7 +20,7 @@ var dudeContainer = React.createClass({
 	},
 	componentDidMount: function(){
 		this.setState({
-			fullName: this.title + " " + this.props.name + " " + this.props.surname,
+			fullName: this.props.title + " " + this.props.name + " " + this.props.surname,
 			description: [['Nationality', this.props.nat], ['Sex', this.props.gender], ['City', this.props.city]]
 		});
 	},
@@ -31,7 +30,7 @@ var dudeContainer = React.createClass({
 				fullName={this.state.fullName}
 				thumbnail_url={this.props.thumbnail_url}
 				description={this.state.description}
-				key={this.props.id}
+				key={this.props.id + 'UC'}
 			/>
 		)
 	}
