@@ -1,16 +1,12 @@
 var React = require('react');
-var Jumbotron = require('react-bootstrap').Jumbotron;
-var Sidebar = require('./Sidebar');
-// var List = require('./List');
-var UserContainer = require('../containers/UserContainer');
+var UsersContainer = require('../containers/UsersContainer');
 
 function Home (props){
 	return (
 		<div>
-			<UserContainer />
+			<UsersContainer step={50}/>
 		</div>
-
 	)
-}
+};
 
 module.exports = Home;

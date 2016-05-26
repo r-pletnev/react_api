@@ -2,12 +2,10 @@ var React = require('react');
 var Panel = require('react-bootstrap').Panel; 
 var ListGroup = require('react-bootstrap').ListGroup;
 var Col = require('react-bootstrap').Col;
-var PropTypes = React.PropTypes
-
-
+var PropTypes = React.PropTypes;
 
 function List(props){
-	var title = (<h3>{props.title}</h3>)
+	var title = (<h3>{props.header}</h3>)
 	return (
 		<Col sm={10}>
 			<Panel header={title} bsStyle="primary">
@@ -20,7 +18,7 @@ function List(props){
 }
 
 List.propTypes = {
-	title: PropTypes.string
+	header: PropTypes.string.isRequired
 }
 
 module.exports = List;

@@ -1,14 +1,12 @@
 var React = require('react');
-var UserItem = require('../components/UserItem');
-var randomuserHelper = require('../utils/randomuserHelper');
+var randomUserHelper = require('../utils/randomUserHelper');
 var PropTypes = React.PropTypes;
-var List = require('../components/List');
-var Sidebar = require('../components/Sidebar');
 var UserList = require('../components/UserList');
+var Sidebar = require('../components/Sidebar');
 
 var UsersContainer = React.createClass({
 	propTypes: {
-		step: 50
+		step: PropTypes.number.isRequired
 	},
 	getInitialState: function(){
 		return {
@@ -16,7 +14,7 @@ var UsersContainer = React.createClass({
 		}
 	},
 	componentDidMount: function(){
-		randomuserHelper.getUsers(50)
+		randomUserHelper.getUsersInfo(this.props.step)
 			.then(function(users) {
 				this.setState({
 					usersRegistry: users
@@ -25,14 +23,12 @@ var UsersContainer = React.createClass({
 	},
 	render: function(){
 		return(
-			<Sidebar />
-			<UserList />
-
-
+			<div>
+				<Sidebar />
+				<UserList header="People" users={this.state.usersRegistry} />
+			</div>
 		)
 	}
-
-
 });
 
 

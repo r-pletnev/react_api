@@ -18,5 +18,4 @@ function Sidebar(props){
 	)
 }
 
-
 module.exports = Sidebar;

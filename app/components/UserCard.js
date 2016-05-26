@@ -3,18 +3,19 @@ var Bootstrap = require('react-bootstrap');
 var ListGroupItem = Bootstrap.ListGroupItem;
 var Col = Bootstrap.Col;
 var Row = Bootstrap.Row;
+var Image = Bootstrap.Image;
 var PropTypes = React.PropTypes;
 
-function UserItem(user){
+function UserCard(user){
 	var userDescription = user.description.map(function(prop){
 		return (
 			<span>
-				<strong>{prop[0]} :</strong> prop[1]
+				<strong>{prop[0]} :</strong> {prop[1]} {' '}
 			</span>
 		)
 	});
 	return (
-		<ListGroupItem>
+		<ListGroupItem key={user.id}>
 			<Row>
 				<Col sm={2}>
 					<Image src={user.thumbnail_url} rounded/>
@@ -29,12 +30,13 @@ function UserItem(user){
 
 }
 
-randomUser.propTypes{
+UserCard.propTypes = {
 	thumbnail_url: PropTypes.string.isRequired,
 	fullName: PropTypes.string.isRequired,
-	description: PropTypes.array.isRequired
+	description: PropTypes.array.isRequired,
+	id: PropTypes.string.isRequired
 }
 
 
 
-module.exports = UserItem;
+module.exports = UserCard;
