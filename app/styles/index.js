@@ -4,6 +4,10 @@ var styles = {
 	},
 	space: {
 		marginTop: '4em'
+	},
+	scrollable: {
+		overflowY: 'scroll',
+		maxHeight: '800px'
 	}
 }
 

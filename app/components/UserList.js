@@ -20,7 +20,7 @@ function UserList (props){
 		}
 	);
 	return (
-		<List header={props.header}>
+		<List header={props.header} onScrollHandler={props.onScrollHandler}>
 			{usersNodes}
 		</List>
 	)
@@ -28,7 +28,8 @@ function UserList (props){
 
 UserList.propTypes = {
 	header: PropTypes.string.isRequired,
-	users: PropTypes.object.isRequired
+	users: PropTypes.object.isRequired,
+	onScrollHandler: PropTypes.func.isRequired
 }
 
 module.exports = UserList;
