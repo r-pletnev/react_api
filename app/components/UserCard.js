@@ -15,17 +15,19 @@ function UserCard(user){
 		)
 	});
 	return (
-		<ListGroupItem key={user.id}>
-			<Row>
-				<Col sm={2}>
-					<Image src={user.thumbnail_url} circle/>
-				</Col>
-				<Col sm={10}>
-					<h4>{user.fullName}</h4>
-					<div>{userDescription}</div>
-				</Col>
-			</Row>
-		</ListGroupItem>
+		<div>
+			<ListGroupItem key={user.id}>
+				<Row>
+					<Col sm={2}>
+						<Image src={user.thumbnail_url} circle/>
+					</Col>
+					<Col sm={10}>
+						<h4>{user.fullName}</h4>
+						<div>{userDescription}</div>
+					</Col>
+				</Row>
+			</ListGroupItem>
+		</div>
 	)
 
 }

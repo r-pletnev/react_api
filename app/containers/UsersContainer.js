@@ -11,20 +11,39 @@ var UsersContainer = React.createClass({
 	},
 	getInitialState: function(){
 		return {
-			usersRegistry: {}
+			usersRegistry: {},
+			isLoading: true
 		}
 	},
 	updateUsersRegistry: function(){
+		this.setState({
+			isLoading: true
+		})
 		randomUserHelper.getUsersInfo(this.props.step)
 			.then(function(users) {
 				this.setState({
-					usersRegistry: _.assign(this.state.usersRegistry, users)
+					usersRegistry: _.assign(this.state.usersRegistry, users),
+					isLoading: false
+
 				})
 			}.bind(this))
 	},
 
 	handleOnScroll: function(event){
-		// console.log(event);
+		if(!this.state.isLoading && (event.clientHeight + event.scrollTop) > event.scrollHeight / 1.5){
+			this.updateUsersRegistry();
+		}
+	},
+
+	handleOnClickClear: function(event){
+		this.setState({
+			usersRegistry: {}
+		})
+
+	},
+
+	handleOnStart: function(event){
+		this.updateUsersRegistry();
 	},
 
 	componentDidMount: function(){
@@ -33,7 +52,7 @@ var UsersContainer = React.createClass({
 	render: function(){
 		return(
 			<div>
-				<Sidebar />
+				<Sidebar clearHandler={this.handleOnClickClear} startHandler={this.handleOnStart}/>
 				 <UserList header="People" users={this.state.usersRegistry} onScrollHandler={this.handleOnScroll} />
 			</div>
 		)
