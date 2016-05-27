@@ -5,6 +5,7 @@ var Col = Bootstrap.Col;
 var Row = Bootstrap.Row;
 var Image = Bootstrap.Image;
 var PropTypes = React.PropTypes;
+var Draggable = require('react-draggable');
 
 function UserCard(user){
 	var userDescription = user.description.map(function(prop, index){
@@ -15,19 +16,19 @@ function UserCard(user){
 		)
 	});
 	return (
-		<div>
-			<ListGroupItem key={user.id}>
-				<Row>
-					<Col sm={2}>
-						<Image src={user.thumbnail_url} circle/>
-					</Col>
-					<Col sm={10}>
-						<h4>{user.fullName}</h4>
-						<div>{userDescription}</div>
-					</Col>
-				</Row>
-			</ListGroupItem>
-		</div>
+			<Draggable bounds='body' >
+				<ListGroupItem key={user.id}>
+					<Row>
+						<Col sm={2}>
+							<Image src={user.thumbnail_url} circle/>
+						</Col>
+						<Col sm={10}>
+							<h4>{user.fullName}</h4>
+							<div>{userDescription}</div>
+						</Col>
+					</Row>
+				</ListGroupItem>
+			</Draggable>
 	)
 
 }
@@ -37,7 +38,5 @@ UserCard.propTypes = {
 	fullName: PropTypes.string.isRequired,
 	description: PropTypes.array.isRequired,
 }
-
-
 
 module.exports = UserCard;

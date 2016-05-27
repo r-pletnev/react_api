@@ -31,6 +31,7 @@ var dudeContainer = React.createClass({
 				thumbnail_url={this.props.thumbnail_url}
 				description={this.state.description}
 				key={this.props.id + 'UC'}
+				onClick={this.handleClick}
 			/>
 		)
 	}
